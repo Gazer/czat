@@ -1,7 +1,7 @@
 import 'package:czat/chat_page.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dotenv/dotenv.dart' show load, clean, isEveryDefined, env;
+import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 
 void main() {
   load();
