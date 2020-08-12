@@ -1,13 +1,7 @@
+import 'package:czat/message.dart';
+import 'package:czat/message_list_tile.dart';
 import 'package:czat/twitch_service.dart';
 import 'package:flutter/material.dart';
-
-class Message {
-  final String user;
-  final String text;
-  final String imageUrl;
-
-  Message(this.user, this.text, this.imageUrl);
-}
 
 class ChatPage extends StatefulWidget {
   final String clientId;
@@ -61,16 +55,25 @@ class _ChatPageState extends State<ChatPage> {
         title: Text("Czat"),
       ),
       body: ListView.separated(
-        itemCount: messages.length,
+        itemCount: messages.length + 1,
         itemBuilder: (_, int index) {
-          var message = messages[index];
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(message.imageUrl),
-            ),
-            title: Text(message.user),
-            subtitle: Text(message.text),
-          );
+          if (index == 0) {
+            var message = Message(
+              "TheUserName",
+              "This is the message with love <3 and more! http://google.com/",
+              "https://i.imgur.com/rD7b0Ki.png",
+            );
+            return MessageListTile(message: message);
+          } else {
+            var message = messages[index - 1];
+            return ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(message.imageUrl),
+              ),
+              title: Text(message.user),
+              subtitle: Text(message.text),
+            );
+          }
         },
         separatorBuilder: (_, __) {
           return Divider();
