@@ -6,7 +6,7 @@ class Message {
   final String imageUrl;
   // 25: [0-4, 5-7]
   final Map<dynamic, dynamic> emotes;
-  List<MessagePart> _ret = null;
+  List<MessagePart> _ret;
 
   Message(this.user, this.text, this.imageUrl, this.emotes);
 
@@ -39,6 +39,26 @@ class Message {
               "https://static-cdn.jtvnw.net/emoticons/v1/$emoteId/1.0"));
           i = end;
           startBeforeEmote = i + 1;
+        } else {
+          if (i + 4 < text.length) {
+            if (text.substring(i, i + 4) == "http") {
+              int j = i;
+              for (; j < text.length; j++) {
+                if (text[j] == ' ') break;
+              }
+
+              var url = text.substring(i, j);
+              // TODO: Validar url
+              if (startBeforeEmote != i) {
+                var textPart = text.substring(startBeforeEmote, i);
+                print(textPart);
+                _ret.add(MessagePart.text(textPart));
+              }
+              _ret.add(MessagePart.url(url));
+              i = j - 1;
+              startBeforeEmote = j;
+            }
+          }
         }
       }
       if (startBeforeEmote < text.length) {

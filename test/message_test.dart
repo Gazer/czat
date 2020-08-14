@@ -12,8 +12,19 @@ void main() {
     },
   );
 
-  test("parts should return 3 items", () {
-    expect(message.parts().length, 3);
+  test("casi", () {
+    var message = Message(
+      "CMierez",
+      "casi",
+      "https://i.imgur.com/rD7b0Ki.png",
+      {},
+    );
+    expect(message.parts().length, 1);
+    expect(message.parts().first, MessagePart.text("casi"));
+  });
+
+  test("parts should return 4 items", () {
+    expect(message.parts().length, 4);
   });
 
   test("parts should return text as first item", () {
@@ -26,15 +37,21 @@ void main() {
   test("parts should return emoji as second item", () {
     expect(
       message.parts()[1],
-      MessagePart.emoji(
-          "https://static-cdn.jtvnw.net/emoticons/v1/555555584/1.0"),
+      MessagePart.emoji("https://static-cdn.jtvnw.net/emoticons/v1/3/1.0"),
     );
   });
 
   test("parts should return text as thrid item", () {
     expect(
       message.parts()[2],
-      MessagePart.text(" and more! http://google.com/"),
+      MessagePart.text(" and more! "),
+    );
+  });
+
+  test("parts should return url as four item", () {
+    expect(
+      message.parts()[3],
+      MessagePart.url("http://google.com/"),
     );
   });
 }

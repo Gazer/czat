@@ -37,7 +37,7 @@ class MessageListTile extends StatelessWidget {
               }, emoji: (emoji) {
                 return EmoteSpan(emoji.imageUrl);
               }, url: (value) {
-                return TextSpan(text: value.url);
+                return UrlSpan(value.url);
               }),
             )
             .toList(),
@@ -91,7 +91,7 @@ class _UrlWidgetState extends State<UrlWidget> {
           child: Text(
             widget.url,
             style: TextStyle(
-              fontSize: fontSize,
+              fontSize: fontSize * 0.7,
               color: color,
               decoration: TextDecoration.underline,
             ),
