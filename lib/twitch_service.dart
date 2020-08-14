@@ -70,6 +70,7 @@ void _runTwitchClient(List params) {
           "name": userstate['display-name'],
           "text": message,
           "imageUrl": avatar,
+          "emotes": userstate['emotes'],
         });
         break;
       case "whisper":

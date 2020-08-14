@@ -36,6 +36,7 @@ class _ChatPageState extends State<ChatPage> {
             data['name'],
             data['text'],
             data['imageUrl'],
+            data['emotes'],
           ),
         );
       });
@@ -62,17 +63,27 @@ class _ChatPageState extends State<ChatPage> {
               "TheUserName",
               "This is the message with love <3 and more! http://google.com/",
               "https://i.imgur.com/rD7b0Ki.png",
+              {},
             );
             return MessageListTile(message: message);
           } else {
             var message = messages[index - 1];
-            return ListTile(
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(message.imageUrl),
-              ),
-              title: Text(message.user),
-              subtitle: Text(message.text),
+            return MessageListTile(
+              message: message,
             );
+            // ListTile(
+            //   leading: CircleAvatar(
+            //     backgroundImage: NetworkImage(message.imageUrl),
+            //   ),
+            //   title: Text(
+            //     message.user,
+            //     style: TextStyle(fontSize: 24),
+            //   ),
+            //   subtitle: Text(
+            //     message.text,
+            //     style: TextStyle(fontSize: 32),
+            //   ),
+            // );
           }
         },
         separatorBuilder: (_, __) {

@@ -5,6 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:czat/message.dart';
 import 'package:flutter/material.dart';
 
+double fontSize = 48;
+
 class MessageListTile extends StatelessWidget {
   final Message message;
 
@@ -16,29 +18,32 @@ class MessageListTile extends StatelessWidget {
       leading: CircleAvatar(
         backgroundImage: NetworkImage(message.imageUrl),
       ),
-      title: Text(message.user),
-      subtitle: _messageWidget(message.text),
+      title: Text(
+        message.user,
+        style: TextStyle(fontSize: 24),
+      ),
+      subtitle: _messageWidget(),
     );
   }
 
-  Widget _messageWidget(String text) {
-    var texts = [
-      "This is the message with love ",
-      "<3", // https://static-cdn.jtvnw.net/emoticons/v1/555555584/1.0
-      " and more! ",
-      "http://google.com/",
-    ];
+  Widget _messageWidget() {
     return Text.rich(
       TextSpan(
-        text: texts[0],
-        children: [
-          EmoteSpan(texts[1]),
-          TextSpan(text: texts[2]),
-          UrlSpan(texts[3]),
-        ],
+        children: message
+            .parts()
+            .map(
+              (part) => part.map(text: (value) {
+                return TextSpan(text: value.text);
+              }, emoji: (emoji) {
+                return EmoteSpan(emoji.imageUrl);
+              }, url: (value) {
+                return TextSpan(text: value.url);
+              }),
+            )
+            .toList(),
       ),
       style: TextStyle(
-        fontSize: 22,
+        fontSize: fontSize * 0.7,
       ),
     );
   }
@@ -86,7 +91,7 @@ class _UrlWidgetState extends State<UrlWidget> {
           child: Text(
             widget.url,
             style: TextStyle(
-              fontSize: 22,
+              fontSize: fontSize,
               color: color,
               decoration: TextDecoration.underline,
             ),
@@ -98,17 +103,12 @@ class _UrlWidgetState extends State<UrlWidget> {
 }
 
 class EmoteSpan extends WidgetSpan {
-  static Map<String, String> _emoteUrls = {
-    "<3": "https://static-cdn.jtvnw.net/emoticons/v1/555555584/1.0",
-  };
-
-  EmoteSpan(String emote)
+  EmoteSpan(String url)
       : super(
           child: SizedBox(
-            height: 22,
+            height: fontSize,
             child: Image.network(
-              _emoteUrls[emote] ??
-                  "https://static-cdn.jtvnw.net/emoticons/v1/555555557/3.0",
+              url ?? "https://static-cdn.jtvnw.net/emoticons/v1/555555557/3.0",
               fit: BoxFit.cover,
             ),
           ),
