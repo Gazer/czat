@@ -1,4 +1,5 @@
 # Miscellaneous
+boxes.db
 .env
 *.class
 *.log

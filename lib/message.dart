@@ -1,11 +1,35 @@
 import 'package:czat/message_part.dart';
+import 'package:hive/hive.dart';
 
-class Message {
+class MessageAdapter extends TypeAdapter<Message> {
+  @override
+  Message read(BinaryReader reader) {
+    return Message(
+      reader.readString(),
+      reader.readString(),
+      reader.readString(),
+      reader.readMap(),
+    );
+  }
+
+  @override
+  int get typeId => 0;
+
+  @override
+  void write(BinaryWriter writer, Message message) {
+    writer.writeString(message.user);
+    writer.writeString(message.text);
+    writer.writeString(message.imageUrl);
+    writer.writeMap(message.emotes);
+  }
+}
+
+class Message extends HiveObject {
   final String user;
   final String text;
   final String imageUrl;
-  // 25: [0-4, 5-7]
   final Map<dynamic, dynamic> emotes;
+
   List<MessagePart> _ret;
 
   Message(this.user, this.text, this.imageUrl, this.emotes);

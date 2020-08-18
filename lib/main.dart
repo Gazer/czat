@@ -1,14 +1,23 @@
 import 'package:czat/chat_page.dart';
+import 'package:czat/message.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
+import 'package:hive/hive.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   load();
 
   if (!isEveryDefined(['CLIENT_ID'])) {
     throw Exception("Please define CLIENT_ID in .env file");
   }
+
+  Hive.init("boxes.db");
+
+  Hive.registerAdapter(MessageAdapter());
+
   runApp(MyApp());
 }
 
