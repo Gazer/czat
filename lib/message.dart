@@ -36,7 +36,7 @@ class Message {
           String emoteId = startEmotes[i]['id'];
           int end = startEmotes[i]['end'];
           _ret.add(MessagePart.emoji(
-              "https://static-cdn.jtvnw.net/emoticons/v1/$emoteId/1.0"));
+              "https://static-cdn.jtvnw.net/emoticons/v1/$emoteId/4.0"));
           i = end;
           startBeforeEmote = i + 1;
         } else {

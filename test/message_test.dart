@@ -37,7 +37,7 @@ void main() {
   test("parts should return emoji as second item", () {
     expect(
       message.parts()[1],
-      MessagePart.emoji("https://static-cdn.jtvnw.net/emoticons/v1/3/1.0"),
+      MessagePart.emoji("https://static-cdn.jtvnw.net/emoticons/v1/3/4.0"),
     );
   });
 
