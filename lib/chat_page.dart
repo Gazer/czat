@@ -19,10 +19,13 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   Box<Message> messageBox;
+  ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
+
+    _scrollController = ScrollController(initialScrollOffset: 0);
 
     _startService();
   }
@@ -48,6 +51,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void dispose() {
     stopTwitchService();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -56,6 +60,24 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Czat"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.vertical_align_top),
+            onPressed: () {
+              _scrollController.animateTo(
+                0,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeIn,
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              messageBox.clear();
+            },
+          ),
+        ],
       ),
       body: messageBox == null
           ? Center(child: CircularProgressIndicator())
@@ -63,6 +85,7 @@ class _ChatPageState extends State<ChatPage> {
               valueListenable: messageBox.listenable(),
               builder: (context, Box<Message> box, widget) {
                 return ListView.separated(
+                  controller: _scrollController,
                   itemCount: box.values.length,
                   itemBuilder: (_, int index) {
                     var message = box.getAt(box.length - index - 1);
