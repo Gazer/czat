@@ -1,5 +1,6 @@
 import 'package:czat/chat_page.dart';
 import 'package:czat/message.dart';
+import 'package:czat/question.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
@@ -17,6 +18,7 @@ void main() {
   Hive.init("boxes.db");
 
   Hive.registerAdapter(MessageAdapter());
+  Hive.registerAdapter(QuestionAdapter());
 
   runApp(MyApp());
 }

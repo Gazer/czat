@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  tmi: ^0.0.3
+  tmi: ^0.0.4
   http:
   dotenv: ^2.0.0
   url_launcher: ^5.5.0

@@ -34,6 +34,23 @@ class Message extends HiveObject {
 
   Message(this.user, this.text, this.imageUrl, this.emotes);
 
+  bool isQuestion() {
+    return text.startsWith("!question ") ||
+        text.startsWith("!q ") ||
+        text.startsWith("!? ");
+  }
+
+  String get question =>
+      isQuestion() ? text.split(" ").sublist(1).join(" ") : "";
+
+  bool isVote() {
+    return (text.startsWith("!vote ") || text.startsWith("!v ")) &&
+        RegExp(r' (\d+)$').hasMatch(text);
+  }
+
+  int get questionId =>
+      isVote() ? int.tryParse(text.split(" ").sublist(1).join(" ")) : -1;
+
   List<MessagePart> parts() {
     if (_ret == null) {
       _ret = [];

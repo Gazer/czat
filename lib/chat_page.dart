@@ -1,5 +1,7 @@
 import 'package:czat/message.dart';
 import 'package:czat/message_list_tile.dart';
+import 'package:czat/question.dart';
+import 'package:czat/questions_page.dart';
 import 'package:czat/twitch_service.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -19,6 +21,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   Box<Message> messageBox;
+  Box<Question> questionBox;
   ScrollController _scrollController;
 
   @override
@@ -32,6 +35,7 @@ class _ChatPageState extends State<ChatPage> {
 
   _startService() async {
     messageBox = await Hive.openBox('messages');
+    questionBox = await Hive.openBox('questions');
 
     var stream = await startTwitchService(widget.clientId);
 
@@ -43,6 +47,22 @@ class _ChatPageState extends State<ChatPage> {
         data['emotes'],
       );
       messageBox.add(message);
+
+      if (message.isQuestion()) {
+        var question = Question(
+          message.question,
+          0,
+          false,
+        );
+        questionBox.add(question);
+      }
+
+      if (message.isVote()) {
+        var question = questionBox.get(message.questionId);
+        question = question.vote();
+
+        questionBox.putAt(message.questionId, question);
+      }
     });
 
     setState(() {});
@@ -61,6 +81,11 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text("Czat"),
         actions: [
+          IconButton(
+              icon: Icon(Icons.question_answer),
+              onPressed: () {
+                Navigator.of(context).push(QuestionsPage.route());
+              }),
           IconButton(
             icon: Icon(Icons.vertical_align_top),
             onPressed: () {
