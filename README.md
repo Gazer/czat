@@ -1,6 +1,8 @@
 # czat
 
-A new Flutter project.
+![CI](https://github.com/Gazer/czat/workflows/CI/badge.svg?branch=master)
+
+A Twitch Chat Client App for Live Streamers.
 
 ## Getting Started
 
