@@ -6,8 +6,13 @@ part 'chat_command.freezed.dart';
 abstract class ChatCommand with _$ChatCommand {
   const factory ChatCommand.text(String user, String text, String imageUrl,
       Map<dynamic, dynamic> emotes) = _TextMessage;
-  const factory ChatCommand.question(String user, String text, String imageUrl,
-      Map<dynamic, dynamic> emotes, String question) = _QuestionMessage;
+  const factory ChatCommand.question(
+      String user,
+      String text,
+      String imageUrl,
+      Map<dynamic, dynamic> emotes,
+      String question,
+      int emotesOffset) = _QuestionMessage;
   const factory ChatCommand.vote(String user, String text, String imageUrl,
       Map<dynamic, dynamic> emotes, int questionId) = _VoteMessage;
 
@@ -25,7 +30,9 @@ abstract class ChatCommand with _$ChatCommand {
         case "q":
         case "?":
           var question = text.split(" ").sublist(1).join(" ");
-          return ChatCommand.question(user, text, imageUrl, emotes, question);
+          var emotesOffset = command.length + 2;
+          return ChatCommand.question(
+              user, text, imageUrl, emotes, question, emotesOffset);
         case "vote":
         case "v":
           var questionId = int.tryParse(text.split(" ").sublist(1).join(" "));

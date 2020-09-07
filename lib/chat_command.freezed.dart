@@ -25,13 +25,14 @@ class _$ChatCommandTearOff {
 
 // ignore: unused_element
   _QuestionMessage question(String user, String text, String imageUrl,
-      Map<dynamic, dynamic> emotes, String question) {
+      Map<dynamic, dynamic> emotes, String question, int emotesOffset) {
     return _QuestionMessage(
       user,
       text,
       imageUrl,
       emotes,
       question,
+      emotesOffset,
     );
   }
 
@@ -64,7 +65,7 @@ mixin _$ChatCommand {
             Map<dynamic, dynamic> emotes),
     @required
         Result question(String user, String text, String imageUrl,
-            Map<dynamic, dynamic> emotes, String question),
+            Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     @required
         Result vote(String user, String text, String imageUrl,
             Map<dynamic, dynamic> emotes, int questionId),
@@ -74,7 +75,7 @@ mixin _$ChatCommand {
     Result text(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes),
     Result question(String user, String text, String imageUrl,
-        Map<dynamic, dynamic> emotes, String question),
+        Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     Result vote(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes, int questionId),
     @required Result orElse(),
@@ -225,7 +226,7 @@ class _$_TextMessage implements _TextMessage {
             Map<dynamic, dynamic> emotes),
     @required
         Result question(String user, String text, String imageUrl,
-            Map<dynamic, dynamic> emotes, String question),
+            Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     @required
         Result vote(String user, String text, String imageUrl,
             Map<dynamic, dynamic> emotes, int questionId),
@@ -242,7 +243,7 @@ class _$_TextMessage implements _TextMessage {
     Result text(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes),
     Result question(String user, String text, String imageUrl,
-        Map<dynamic, dynamic> emotes, String question),
+        Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     Result vote(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes, int questionId),
     @required Result orElse(),
@@ -310,7 +311,8 @@ abstract class _$QuestionMessageCopyWith<$Res>
       String text,
       String imageUrl,
       Map<dynamic, dynamic> emotes,
-      String question});
+      String question,
+      int emotesOffset});
 }
 
 class __$QuestionMessageCopyWithImpl<$Res>
@@ -330,6 +332,7 @@ class __$QuestionMessageCopyWithImpl<$Res>
     Object imageUrl = freezed,
     Object emotes = freezed,
     Object question = freezed,
+    Object emotesOffset = freezed,
   }) {
     return _then(_QuestionMessage(
       user == freezed ? _value.user : user as String,
@@ -337,18 +340,20 @@ class __$QuestionMessageCopyWithImpl<$Res>
       imageUrl == freezed ? _value.imageUrl : imageUrl as String,
       emotes == freezed ? _value.emotes : emotes as Map<dynamic, dynamic>,
       question == freezed ? _value.question : question as String,
+      emotesOffset == freezed ? _value.emotesOffset : emotesOffset as int,
     ));
   }
 }
 
 class _$_QuestionMessage implements _QuestionMessage {
-  const _$_QuestionMessage(
-      this.user, this.text, this.imageUrl, this.emotes, this.question)
+  const _$_QuestionMessage(this.user, this.text, this.imageUrl, this.emotes,
+      this.question, this.emotesOffset)
       : assert(user != null),
         assert(text != null),
         assert(imageUrl != null),
         assert(emotes != null),
-        assert(question != null);
+        assert(question != null),
+        assert(emotesOffset != null);
 
   @override
   final String user;
@@ -360,10 +365,12 @@ class _$_QuestionMessage implements _QuestionMessage {
   final Map<dynamic, dynamic> emotes;
   @override
   final String question;
+  @override
+  final int emotesOffset;
 
   @override
   String toString() {
-    return 'ChatCommand.question(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes, question: $question)';
+    return 'ChatCommand.question(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes, question: $question, emotesOffset: $emotesOffset)';
   }
 
   @override
@@ -381,7 +388,10 @@ class _$_QuestionMessage implements _QuestionMessage {
                 const DeepCollectionEquality().equals(other.emotes, emotes)) &&
             (identical(other.question, question) ||
                 const DeepCollectionEquality()
-                    .equals(other.question, question)));
+                    .equals(other.question, question)) &&
+            (identical(other.emotesOffset, emotesOffset) ||
+                const DeepCollectionEquality()
+                    .equals(other.emotesOffset, emotesOffset)));
   }
 
   @override
@@ -391,7 +401,8 @@ class _$_QuestionMessage implements _QuestionMessage {
       const DeepCollectionEquality().hash(text) ^
       const DeepCollectionEquality().hash(imageUrl) ^
       const DeepCollectionEquality().hash(emotes) ^
-      const DeepCollectionEquality().hash(question);
+      const DeepCollectionEquality().hash(question) ^
+      const DeepCollectionEquality().hash(emotesOffset);
 
   @override
   _$QuestionMessageCopyWith<_QuestionMessage> get copyWith =>
@@ -405,7 +416,7 @@ class _$_QuestionMessage implements _QuestionMessage {
             Map<dynamic, dynamic> emotes),
     @required
         Result question(String user, String text, String imageUrl,
-            Map<dynamic, dynamic> emotes, String question),
+            Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     @required
         Result vote(String user, String text, String imageUrl,
             Map<dynamic, dynamic> emotes, int questionId),
@@ -413,7 +424,8 @@ class _$_QuestionMessage implements _QuestionMessage {
     assert(text != null);
     assert(question != null);
     assert(vote != null);
-    return question(user, this.text, imageUrl, emotes, this.question);
+    return question(
+        user, this.text, imageUrl, emotes, this.question, emotesOffset);
   }
 
   @override
@@ -422,14 +434,15 @@ class _$_QuestionMessage implements _QuestionMessage {
     Result text(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes),
     Result question(String user, String text, String imageUrl,
-        Map<dynamic, dynamic> emotes, String question),
+        Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     Result vote(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes, int questionId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (question != null) {
-      return question(user, this.text, imageUrl, emotes, this.question);
+      return question(
+          user, this.text, imageUrl, emotes, this.question, emotesOffset);
     }
     return orElse();
   }
@@ -464,8 +477,13 @@ class _$_QuestionMessage implements _QuestionMessage {
 }
 
 abstract class _QuestionMessage implements ChatCommand {
-  const factory _QuestionMessage(String user, String text, String imageUrl,
-      Map<dynamic, dynamic> emotes, String question) = _$_QuestionMessage;
+  const factory _QuestionMessage(
+      String user,
+      String text,
+      String imageUrl,
+      Map<dynamic, dynamic> emotes,
+      String question,
+      int emotesOffset) = _$_QuestionMessage;
 
   @override
   String get user;
@@ -476,6 +494,7 @@ abstract class _QuestionMessage implements ChatCommand {
   @override
   Map<dynamic, dynamic> get emotes;
   String get question;
+  int get emotesOffset;
   @override
   _$QuestionMessageCopyWith<_QuestionMessage> get copyWith;
 }
@@ -585,7 +604,7 @@ class _$_VoteMessage implements _VoteMessage {
             Map<dynamic, dynamic> emotes),
     @required
         Result question(String user, String text, String imageUrl,
-            Map<dynamic, dynamic> emotes, String question),
+            Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     @required
         Result vote(String user, String text, String imageUrl,
             Map<dynamic, dynamic> emotes, int questionId),
@@ -602,7 +621,7 @@ class _$_VoteMessage implements _VoteMessage {
     Result text(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes),
     Result question(String user, String text, String imageUrl,
-        Map<dynamic, dynamic> emotes, String question),
+        Map<dynamic, dynamic> emotes, String question, int emotesOffset),
     Result vote(String user, String text, String imageUrl,
         Map<dynamic, dynamic> emotes, int questionId),
     @required Result orElse(),

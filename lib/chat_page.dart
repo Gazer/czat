@@ -60,6 +60,8 @@ class _ChatPageState extends State<ChatPage> {
           command.question,
           0,
           false,
+          command.emotes,
+          command.emotesOffset,
         );
         questionBox.add(question);
 
