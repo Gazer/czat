@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'new_message.dart';
+part of 'chat_command.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,8 +9,8 @@ part of 'new_message.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$NewMessageTearOff {
-  const _$NewMessageTearOff();
+class _$ChatCommandTearOff {
+  const _$ChatCommandTearOff();
 
 // ignore: unused_element
   _TextMessage text(
@@ -49,9 +49,9 @@ class _$NewMessageTearOff {
 }
 
 // ignore: unused_element
-const $NewMessage = _$NewMessageTearOff();
+const $ChatCommand = _$ChatCommandTearOff();
 
-mixin _$NewMessage {
+mixin _$ChatCommand {
   String get user;
   String get text;
   String get imageUrl;
@@ -93,13 +93,13 @@ mixin _$NewMessage {
     @required Result orElse(),
   });
 
-  $NewMessageCopyWith<NewMessage> get copyWith;
+  $ChatCommandCopyWith<ChatCommand> get copyWith;
 }
 
-abstract class $NewMessageCopyWith<$Res> {
-  factory $NewMessageCopyWith(
-          NewMessage value, $Res Function(NewMessage) then) =
-      _$NewMessageCopyWithImpl<$Res>;
+abstract class $ChatCommandCopyWith<$Res> {
+  factory $ChatCommandCopyWith(
+          ChatCommand value, $Res Function(ChatCommand) then) =
+      _$ChatCommandCopyWithImpl<$Res>;
   $Res call(
       {String user,
       String text,
@@ -107,12 +107,12 @@ abstract class $NewMessageCopyWith<$Res> {
       Map<dynamic, dynamic> emotes});
 }
 
-class _$NewMessageCopyWithImpl<$Res> implements $NewMessageCopyWith<$Res> {
-  _$NewMessageCopyWithImpl(this._value, this._then);
+class _$ChatCommandCopyWithImpl<$Res> implements $ChatCommandCopyWith<$Res> {
+  _$ChatCommandCopyWithImpl(this._value, this._then);
 
-  final NewMessage _value;
+  final ChatCommand _value;
   // ignore: unused_field
-  final $Res Function(NewMessage) _then;
+  final $Res Function(ChatCommand) _then;
 
   @override
   $Res call({
@@ -132,7 +132,7 @@ class _$NewMessageCopyWithImpl<$Res> implements $NewMessageCopyWith<$Res> {
 }
 
 abstract class _$TextMessageCopyWith<$Res>
-    implements $NewMessageCopyWith<$Res> {
+    implements $ChatCommandCopyWith<$Res> {
   factory _$TextMessageCopyWith(
           _TextMessage value, $Res Function(_TextMessage) then) =
       __$TextMessageCopyWithImpl<$Res>;
@@ -144,7 +144,7 @@ abstract class _$TextMessageCopyWith<$Res>
       Map<dynamic, dynamic> emotes});
 }
 
-class __$TextMessageCopyWithImpl<$Res> extends _$NewMessageCopyWithImpl<$Res>
+class __$TextMessageCopyWithImpl<$Res> extends _$ChatCommandCopyWithImpl<$Res>
     implements _$TextMessageCopyWith<$Res> {
   __$TextMessageCopyWithImpl(
       _TextMessage _value, $Res Function(_TextMessage) _then)
@@ -187,7 +187,7 @@ class _$_TextMessage implements _TextMessage {
 
   @override
   String toString() {
-    return 'NewMessage.text(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes)';
+    return 'ChatCommand.text(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes)';
   }
 
   @override
@@ -283,7 +283,7 @@ class _$_TextMessage implements _TextMessage {
   }
 }
 
-abstract class _TextMessage implements NewMessage {
+abstract class _TextMessage implements ChatCommand {
   const factory _TextMessage(String user, String text, String imageUrl,
       Map<dynamic, dynamic> emotes) = _$_TextMessage;
 
@@ -300,7 +300,7 @@ abstract class _TextMessage implements NewMessage {
 }
 
 abstract class _$QuestionMessageCopyWith<$Res>
-    implements $NewMessageCopyWith<$Res> {
+    implements $ChatCommandCopyWith<$Res> {
   factory _$QuestionMessageCopyWith(
           _QuestionMessage value, $Res Function(_QuestionMessage) then) =
       __$QuestionMessageCopyWithImpl<$Res>;
@@ -314,7 +314,7 @@ abstract class _$QuestionMessageCopyWith<$Res>
 }
 
 class __$QuestionMessageCopyWithImpl<$Res>
-    extends _$NewMessageCopyWithImpl<$Res>
+    extends _$ChatCommandCopyWithImpl<$Res>
     implements _$QuestionMessageCopyWith<$Res> {
   __$QuestionMessageCopyWithImpl(
       _QuestionMessage _value, $Res Function(_QuestionMessage) _then)
@@ -363,7 +363,7 @@ class _$_QuestionMessage implements _QuestionMessage {
 
   @override
   String toString() {
-    return 'NewMessage.question(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes, question: $question)';
+    return 'ChatCommand.question(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes, question: $question)';
   }
 
   @override
@@ -463,7 +463,7 @@ class _$_QuestionMessage implements _QuestionMessage {
   }
 }
 
-abstract class _QuestionMessage implements NewMessage {
+abstract class _QuestionMessage implements ChatCommand {
   const factory _QuestionMessage(String user, String text, String imageUrl,
       Map<dynamic, dynamic> emotes, String question) = _$_QuestionMessage;
 
@@ -481,7 +481,7 @@ abstract class _QuestionMessage implements NewMessage {
 }
 
 abstract class _$VoteMessageCopyWith<$Res>
-    implements $NewMessageCopyWith<$Res> {
+    implements $ChatCommandCopyWith<$Res> {
   factory _$VoteMessageCopyWith(
           _VoteMessage value, $Res Function(_VoteMessage) then) =
       __$VoteMessageCopyWithImpl<$Res>;
@@ -494,7 +494,7 @@ abstract class _$VoteMessageCopyWith<$Res>
       int questionId});
 }
 
-class __$VoteMessageCopyWithImpl<$Res> extends _$NewMessageCopyWithImpl<$Res>
+class __$VoteMessageCopyWithImpl<$Res> extends _$ChatCommandCopyWithImpl<$Res>
     implements _$VoteMessageCopyWith<$Res> {
   __$VoteMessageCopyWithImpl(
       _VoteMessage _value, $Res Function(_VoteMessage) _then)
@@ -543,7 +543,7 @@ class _$_VoteMessage implements _VoteMessage {
 
   @override
   String toString() {
-    return 'NewMessage.vote(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes, questionId: $questionId)';
+    return 'ChatCommand.vote(user: $user, text: $text, imageUrl: $imageUrl, emotes: $emotes, questionId: $questionId)';
   }
 
   @override
@@ -643,7 +643,7 @@ class _$_VoteMessage implements _VoteMessage {
   }
 }
 
-abstract class _VoteMessage implements NewMessage {
+abstract class _VoteMessage implements ChatCommand {
   const factory _VoteMessage(String user, String text, String imageUrl,
       Map<dynamic, dynamic> emotes, int questionId) = _$_VoteMessage;
 

@@ -1,5 +1,6 @@
 import 'package:czat/message.dart';
 import 'package:czat/message_list_tile.dart';
+import 'package:czat/chat_command.dart';
 import 'package:czat/question.dart';
 import 'package:czat/questions_page.dart';
 import 'package:czat/twitch_service.dart';
@@ -40,29 +41,48 @@ class _ChatPageState extends State<ChatPage> {
     var stream = await startTwitchService(widget.clientId);
 
     stream.listen((data) {
-      var message = Message(
+      var command = ChatCommand(
         data['name'],
         data['text'],
         data['imageUrl'],
         data['emotes'],
       );
-      messageBox.add(message);
 
-      if (message.isQuestion()) {
+      var message = command.map(text: (command) {
+        return Message(
+          command.user,
+          command.text,
+          command.imageUrl,
+          command.emotes,
+        );
+      }, question: (command) {
         var question = Question(
-          message.question,
+          command.question,
           0,
           false,
         );
         questionBox.add(question);
-      }
 
-      if (message.isVote()) {
-        var question = questionBox.get(message.questionId);
+        return Message(
+          command.user,
+          command.text,
+          command.imageUrl,
+          command.emotes,
+        );
+      }, vote: (command) {
+        var question = questionBox.get(command.questionId);
         question = question.vote();
+        questionBox.putAt(command.questionId, question);
 
-        questionBox.putAt(message.questionId, question);
-      }
+        return Message(
+          command.user,
+          command.text,
+          command.imageUrl,
+          command.emotes,
+        );
+      });
+
+      messageBox.add(message);
     });
 
     setState(() {});
