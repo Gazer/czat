@@ -12,18 +12,17 @@ class ChatPage extends StatefulWidget {
   final String clientId;
 
   const ChatPage({
-    Key key,
-    @required this.clientId,
-  }) : super(key: key);
+    required this.clientId,
+  }) : super();
 
   @override
   _ChatPageState createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> {
-  Box<Message> messageBox;
-  Box<Question> questionBox;
-  ScrollController _scrollController;
+  Box<Message>? messageBox;
+  Box<Question>? questionBox;
+  ScrollController? _scrollController;
 
   @override
   void initState() {
@@ -48,52 +47,41 @@ class _ChatPageState extends State<ChatPage> {
         data['emotes'],
       );
 
-      var message = command.map(text: (command) {
-        return Message(
-          command.user,
-          command.text,
-          command.imageUrl,
-          command.emotes,
-        );
-      }, question: (command) {
-        var question = Question(
-          command.question,
-          0,
-          false,
-          command.emotes,
-          command.emotesOffset,
-        );
-        questionBox.add(question);
+      switch (command) {
+        case ChatText():
+          break;
+        case ChatQuestion():
+          var question = Question(
+            command.question,
+            0,
+            false,
+            command.emotes,
+            command.emotesOffset,
+          );
+          questionBox?.add(question);
+        case ChatVote():
+          var question = questionBox?.get(command.questionId);
+          if (question != null) {
+            question = question.vote();
+            questionBox?.putAt(command.questionId, question);
+          }
+      }
 
-        return Message(
-          command.user,
-          command.text,
-          command.imageUrl,
-          command.emotes,
-        );
-      }, vote: (command) {
-        var question = questionBox.get(command.questionId);
-        question = question.vote();
-        questionBox.putAt(command.questionId, question);
+      messageBox?.add(Message(
+        command.user,
+        command.text,
+        command.imageUrl,
+        command.emotes,
+      ));
 
-        return Message(
-          command.user,
-          command.text,
-          command.imageUrl,
-          command.emotes,
-        );
-      });
-
-      messageBox.add(message);
+      setState(() {});
     });
-
-    setState(() {});
   }
 
   @override
   void dispose() {
     stopTwitchService();
-    _scrollController.dispose();
+    _scrollController?.dispose();
     super.dispose();
   }
 
@@ -111,7 +99,7 @@ class _ChatPageState extends State<ChatPage> {
           IconButton(
             icon: Icon(Icons.vertical_align_top),
             onPressed: () {
-              _scrollController.animateTo(
+              _scrollController?.animateTo(
                 0,
                 duration: Duration(milliseconds: 500),
                 curve: Curves.easeIn,
@@ -121,7 +109,7 @@ class _ChatPageState extends State<ChatPage> {
           IconButton(
             icon: Icon(Icons.delete),
             onPressed: () {
-              messageBox.clear();
+              messageBox?.clear();
             },
           ),
         ],
@@ -129,7 +117,7 @@ class _ChatPageState extends State<ChatPage> {
       body: messageBox == null
           ? Center(child: CircularProgressIndicator())
           : ValueListenableBuilder(
-              valueListenable: messageBox.listenable(),
+              valueListenable: messageBox!.listenable(),
               builder: (context, Box<Message> box, widget) {
                 return ListView.separated(
                   controller: _scrollController,
@@ -137,7 +125,7 @@ class _ChatPageState extends State<ChatPage> {
                   itemBuilder: (_, int index) {
                     var message = box.getAt(box.length - index - 1);
                     return MessageListTile(
-                      message: message,
+                      message: message!,
                     );
                   },
                   separatorBuilder: (_, __) {

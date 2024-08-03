@@ -7,10 +7,9 @@ class TextWithFormat extends StatelessWidget {
   final int fontSize;
 
   const TextWithFormat({
-    Key key,
-    @required this.parts,
-    @required this.fontSize,
-  }) : super(key: key);
+    required this.parts,
+    required this.fontSize,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +17,11 @@ class TextWithFormat extends StatelessWidget {
       TextSpan(
         children: parts
             .map(
-              (part) => part.map(text: (value) {
-                return TextSpan(text: value.text);
-              }, emoji: (emoji) {
-                return EmoteSpan(emoji.imageUrl, fontSize * 1.0);
-              }, url: (value) {
-                return UrlSpan(value.url, fontSize);
-              }),
+              (part) => switch (part) {
+                MessagePartText() => TextSpan(text: part.text),
+                MessagePartEmoji() => EmoteSpan(part.imageUrl, fontSize * 1.0),
+                MessagePartUrl() => UrlSpan(part.url, fontSize),
+              },
             )
             .toList(),
       ),
@@ -49,7 +46,7 @@ class UrlWidget extends StatefulWidget {
   final String url;
   final int fontSize;
 
-  UrlWidget({Key key, this.url, this.fontSize}) : super(key: key);
+  UrlWidget({required this.url, required this.fontSize}) : super();
 
   @override
   _UrlWidgetState createState() => _UrlWidgetState();
@@ -74,8 +71,9 @@ class _UrlWidgetState extends State<UrlWidget> {
         },
         child: GestureDetector(
           onTap: () async {
-            if (await canLaunch(widget.url)) {
-              await launch(widget.url);
+            var uri = Uri.parse(widget.url);
+            if (await canLaunchUrl(uri)) {
+              await launchUrl(uri);
             }
           },
           child: Text(
@@ -98,7 +96,7 @@ class EmoteSpan extends WidgetSpan {
           child: SizedBox(
             height: fontSize,
             child: Image.network(
-              url ?? "https://static-cdn.jtvnw.net/emoticons/v1/555555557/3.0",
+              url,
               fit: BoxFit.cover,
             ),
           ),

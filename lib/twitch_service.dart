@@ -3,7 +3,7 @@ import 'dart:isolate';
 import 'package:tmi/tmi.dart' as tmi;
 import 'package:http/http.dart' as http;
 
-Isolate _isolate;
+Isolate? _isolate;
 
 Future<ReceivePort> startTwitchService(String clientId) async {
   // port for this main isolate to receive messages.
@@ -16,9 +16,7 @@ Future<ReceivePort> startTwitchService(String clientId) async {
 }
 
 stopTwitchService() {
-  if (_isolate != null) {
-    _isolate.kill(priority: Isolate.immediate);
-  }
+  _isolate?.kill(priority: Isolate.immediate);
 }
 
 void _runTwitchClient(List params) {
@@ -28,7 +26,7 @@ void _runTwitchClient(List params) {
   Map<String, String> avatars = {};
 
   var client = tmi.Client(
-    channels: "androidedelvalle",
+    channels: "rubius",
     secure: true,
   );
   client.connect();
@@ -49,11 +47,11 @@ void _runTwitchClient(List params) {
         var userId = userstate['user-id'];
         String avatar = "https://i.imgur.com/rD7b0Ki.png";
         if (avatars.containsKey(userId)) {
-          avatar = avatars[userId];
+          avatar = avatars[userId]!;
         } else {
           // Fetch user
           try {
-            var url = "https://api.twitch.tv/kraken/users/$userId";
+            var url = Uri.parse("https://api.twitch.tv/kraken/users/$userId");
             var response = await http.get(url, headers: {
               'Client-ID': clientId,
               'Accept': 'application/vnd.twitchtv.v5+json',

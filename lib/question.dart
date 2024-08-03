@@ -33,10 +33,15 @@ class Question extends HiveObject {
   final Map<dynamic, dynamic> emotes;
   final int emotesOffset;
 
-  List<MessagePart> _ret;
+  List<MessagePart>? _ret;
 
   Question(
-      this.text, this.votes, this.answered, this.emotes, this.emotesOffset);
+    this.text,
+    this.votes,
+    this.answered,
+    this.emotes,
+    this.emotesOffset,
+  );
 
   Question vote() {
     return Question(
@@ -59,8 +64,9 @@ class Question extends HiveObject {
           var splitted = startStop.split("-").map((e) => int.parse(e)).toList();
           var start = splitted[0] - emotesOffset;
           var stop = splitted[1] - emotesOffset;
-          startEmotes[start] = {'end': stop, 'id': emoteKey};
+          map[start] = {'end': stop, 'id': emoteKey};
         });
+        return map;
       });
 
       int startBeforeEmote = 0;
@@ -68,12 +74,12 @@ class Question extends HiveObject {
         if (startEmotes.containsKey(i)) {
           if (startBeforeEmote != i) {
             var textPart = text.substring(startBeforeEmote, i);
-            _ret.add(MessagePart.text(textPart));
+            _ret?.add(MessagePart.text(textPart));
           }
 
-          String emoteId = startEmotes[i]['id'];
-          int end = startEmotes[i]['end'];
-          _ret.add(MessagePart.emoji(
+          String emoteId = startEmotes[i]!['id'];
+          int end = startEmotes[i]!['end'];
+          _ret?.add(MessagePart.emoji(
               "https://static-cdn.jtvnw.net/emoticons/v1/$emoteId/4.0"));
           i = end;
           startBeforeEmote = i + 1;
@@ -90,9 +96,9 @@ class Question extends HiveObject {
               if (startBeforeEmote != i) {
                 var textPart = text.substring(startBeforeEmote, i);
                 print(textPart);
-                _ret.add(MessagePart.text(textPart));
+                _ret?.add(MessagePart.text(textPart));
               }
-              _ret.add(MessagePart.url(url));
+              _ret?.add(MessagePart.url(url));
               i = j - 1;
               startBeforeEmote = j;
             }
@@ -101,9 +107,9 @@ class Question extends HiveObject {
       }
       if (startBeforeEmote < text.length) {
         var textPart = text.substring(startBeforeEmote);
-        _ret.add(MessagePart.text(textPart));
+        _ret?.add(MessagePart.text(textPart));
       }
     }
-    return _ret;
+    return _ret!;
   }
 }

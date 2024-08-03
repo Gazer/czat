@@ -3,27 +3,31 @@ import 'package:czat/message.dart';
 import 'package:czat/question.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
+import 'package:dotenv/dotenv.dart';
 import 'package:hive/hive.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  load();
+  // var env = DotEnv(includePlatformEnvironment: true)..load();
 
-  if (!isEveryDefined(['CLIENT_ID'])) {
-    throw Exception("Please define CLIENT_ID in .env file");
-  }
+  // if (!env.isEveryDefined(['CLIENT_ID'])) {
+  // throw Exception("Please define CLIENT_ID in .env file");
+  // }
 
   Hive.init("boxes.db");
 
   Hive.registerAdapter(MessageAdapter());
   Hive.registerAdapter(QuestionAdapter());
 
-  runApp(MyApp());
+  runApp(MyApp("thegrefg"));
 }
 
 class MyApp extends StatelessWidget {
+  final String clientId;
+
+  MyApp(this.clientId);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: ChatPage(
-        clientId: env['CLIENT_ID'],
+        clientId: clientId,
       ),
     );
   }

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'message_part.dart';
 
@@ -9,103 +11,110 @@ part of 'message_part.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$MessagePartTearOff {
-  const _$MessagePartTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-// ignore: unused_element
-  _Text text(String text) {
-    return _Text(
-      text,
-    );
-  }
-
-// ignore: unused_element
-  _Emoji emoji(String imageUrl) {
-    return _Emoji(
-      imageUrl,
-    );
-  }
-
-// ignore: unused_element
-  _Url url(String url) {
-    return _Url(
-      url,
-    );
-  }
-}
-
-// ignore: unused_element
-const $MessagePart = _$MessagePartTearOff();
-
+/// @nodoc
 mixin _$MessagePart {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result text(String text),
-    @required Result emoji(String imageUrl),
-    @required Result url(String url),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) text,
+    required TResult Function(String imageUrl) emoji,
+    required TResult Function(String url) url,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result text(String text),
-    Result emoji(String imageUrl),
-    Result url(String url),
-    @required Result orElse(),
-  });
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? text,
+    TResult? Function(String imageUrl)? emoji,
+    TResult? Function(String url)? url,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result text(_Text value),
-    @required Result emoji(_Emoji value),
-    @required Result url(_Url value),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? text,
+    TResult Function(String imageUrl)? emoji,
+    TResult Function(String url)? url,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result text(_Text value),
-    Result emoji(_Emoji value),
-    Result url(_Url value),
-    @required Result orElse(),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessagePartText value) text,
+    required TResult Function(MessagePartEmoji value) emoji,
+    required TResult Function(MessagePartUrl value) url,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MessagePartText value)? text,
+    TResult? Function(MessagePartEmoji value)? emoji,
+    TResult? Function(MessagePartUrl value)? url,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessagePartText value)? text,
+    TResult Function(MessagePartEmoji value)? emoji,
+    TResult Function(MessagePartUrl value)? url,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $MessagePartCopyWith<$Res> {
   factory $MessagePartCopyWith(
           MessagePart value, $Res Function(MessagePart) then) =
-      _$MessagePartCopyWithImpl<$Res>;
+      _$MessagePartCopyWithImpl<$Res, MessagePart>;
 }
 
-class _$MessagePartCopyWithImpl<$Res> implements $MessagePartCopyWith<$Res> {
+/// @nodoc
+class _$MessagePartCopyWithImpl<$Res, $Val extends MessagePart>
+    implements $MessagePartCopyWith<$Res> {
   _$MessagePartCopyWithImpl(this._value, this._then);
 
-  final MessagePart _value;
   // ignore: unused_field
-  final $Res Function(MessagePart) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
-abstract class _$TextCopyWith<$Res> {
-  factory _$TextCopyWith(_Text value, $Res Function(_Text) then) =
-      __$TextCopyWithImpl<$Res>;
+/// @nodoc
+abstract class _$$MessagePartTextImplCopyWith<$Res> {
+  factory _$$MessagePartTextImplCopyWith(_$MessagePartTextImpl value,
+          $Res Function(_$MessagePartTextImpl) then) =
+      __$$MessagePartTextImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({String text});
 }
 
-class __$TextCopyWithImpl<$Res> extends _$MessagePartCopyWithImpl<$Res>
-    implements _$TextCopyWith<$Res> {
-  __$TextCopyWithImpl(_Text _value, $Res Function(_Text) _then)
-      : super(_value, (v) => _then(v as _Text));
+/// @nodoc
+class __$$MessagePartTextImplCopyWithImpl<$Res>
+    extends _$MessagePartCopyWithImpl<$Res, _$MessagePartTextImpl>
+    implements _$$MessagePartTextImplCopyWith<$Res> {
+  __$$MessagePartTextImplCopyWithImpl(
+      _$MessagePartTextImpl _value, $Res Function(_$MessagePartTextImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _Text get _value => super._value as _Text;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object text = freezed,
+    Object? text = null,
   }) {
-    return _then(_Text(
-      text == freezed ? _value.text : text as String,
+    return _then(_$MessagePartTextImpl(
+      null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-class _$_Text implements _Text {
-  const _$_Text(this.text) : assert(text != null);
+/// @nodoc
+
+class _$MessagePartTextImpl implements MessagePartText {
+  const _$MessagePartTextImpl(this.text);
 
   @override
   final String text;
@@ -116,43 +125,51 @@ class _$_Text implements _Text {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other is _Text &&
-            (identical(other.text, text) ||
-                const DeepCollectionEquality().equals(other.text, text)));
+        (other.runtimeType == runtimeType &&
+            other is _$MessagePartTextImpl &&
+            (identical(other.text, text) || other.text == text));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(text);
+  int get hashCode => Object.hash(runtimeType, text);
 
+  @JsonKey(ignore: true)
   @override
-  _$TextCopyWith<_Text> get copyWith =>
-      __$TextCopyWithImpl<_Text>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$MessagePartTextImplCopyWith<_$MessagePartTextImpl> get copyWith =>
+      __$$MessagePartTextImplCopyWithImpl<_$MessagePartTextImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result text(String text),
-    @required Result emoji(String imageUrl),
-    @required Result url(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) text,
+    required TResult Function(String imageUrl) emoji,
+    required TResult Function(String url) url,
   }) {
-    assert(text != null);
-    assert(emoji != null);
-    assert(url != null);
     return text(this.text);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result text(String text),
-    Result emoji(String imageUrl),
-    Result url(String url),
-    @required Result orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? text,
+    TResult? Function(String imageUrl)? emoji,
+    TResult? Function(String url)? url,
   }) {
-    assert(orElse != null);
+    return text?.call(this.text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? text,
+    TResult Function(String imageUrl)? emoji,
+    TResult Function(String url)? url,
+    required TResult orElse(),
+  }) {
     if (text != null) {
       return text(this.text);
     }
@@ -161,26 +178,32 @@ class _$_Text implements _Text {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result text(_Text value),
-    @required Result emoji(_Emoji value),
-    @required Result url(_Url value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessagePartText value) text,
+    required TResult Function(MessagePartEmoji value) emoji,
+    required TResult Function(MessagePartUrl value) url,
   }) {
-    assert(text != null);
-    assert(emoji != null);
-    assert(url != null);
     return text(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result text(_Text value),
-    Result emoji(_Emoji value),
-    Result url(_Url value),
-    @required Result orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MessagePartText value)? text,
+    TResult? Function(MessagePartEmoji value)? emoji,
+    TResult? Function(MessagePartUrl value)? url,
   }) {
-    assert(orElse != null);
+    return text?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessagePartText value)? text,
+    TResult Function(MessagePartEmoji value)? emoji,
+    TResult Function(MessagePartUrl value)? url,
+    required TResult orElse(),
+  }) {
     if (text != null) {
       return text(this);
     }
@@ -188,39 +211,50 @@ class _$_Text implements _Text {
   }
 }
 
-abstract class _Text implements MessagePart {
-  const factory _Text(String text) = _$_Text;
+abstract class MessagePartText implements MessagePart {
+  const factory MessagePartText(final String text) = _$MessagePartTextImpl;
 
   String get text;
-  _$TextCopyWith<_Text> get copyWith;
+  @JsonKey(ignore: true)
+  _$$MessagePartTextImplCopyWith<_$MessagePartTextImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-abstract class _$EmojiCopyWith<$Res> {
-  factory _$EmojiCopyWith(_Emoji value, $Res Function(_Emoji) then) =
-      __$EmojiCopyWithImpl<$Res>;
+/// @nodoc
+abstract class _$$MessagePartEmojiImplCopyWith<$Res> {
+  factory _$$MessagePartEmojiImplCopyWith(_$MessagePartEmojiImpl value,
+          $Res Function(_$MessagePartEmojiImpl) then) =
+      __$$MessagePartEmojiImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({String imageUrl});
 }
 
-class __$EmojiCopyWithImpl<$Res> extends _$MessagePartCopyWithImpl<$Res>
-    implements _$EmojiCopyWith<$Res> {
-  __$EmojiCopyWithImpl(_Emoji _value, $Res Function(_Emoji) _then)
-      : super(_value, (v) => _then(v as _Emoji));
+/// @nodoc
+class __$$MessagePartEmojiImplCopyWithImpl<$Res>
+    extends _$MessagePartCopyWithImpl<$Res, _$MessagePartEmojiImpl>
+    implements _$$MessagePartEmojiImplCopyWith<$Res> {
+  __$$MessagePartEmojiImplCopyWithImpl(_$MessagePartEmojiImpl _value,
+      $Res Function(_$MessagePartEmojiImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _Emoji get _value => super._value as _Emoji;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object imageUrl = freezed,
+    Object? imageUrl = null,
   }) {
-    return _then(_Emoji(
-      imageUrl == freezed ? _value.imageUrl : imageUrl as String,
+    return _then(_$MessagePartEmojiImpl(
+      null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-class _$_Emoji implements _Emoji {
-  const _$_Emoji(this.imageUrl) : assert(imageUrl != null);
+/// @nodoc
+
+class _$MessagePartEmojiImpl implements MessagePartEmoji {
+  const _$MessagePartEmojiImpl(this.imageUrl);
 
   @override
   final String imageUrl;
@@ -231,44 +265,52 @@ class _$_Emoji implements _Emoji {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other is _Emoji &&
+        (other.runtimeType == runtimeType &&
+            other is _$MessagePartEmojiImpl &&
             (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)));
+                other.imageUrl == imageUrl));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(imageUrl);
+  int get hashCode => Object.hash(runtimeType, imageUrl);
 
+  @JsonKey(ignore: true)
   @override
-  _$EmojiCopyWith<_Emoji> get copyWith =>
-      __$EmojiCopyWithImpl<_Emoji>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$MessagePartEmojiImplCopyWith<_$MessagePartEmojiImpl> get copyWith =>
+      __$$MessagePartEmojiImplCopyWithImpl<_$MessagePartEmojiImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result text(String text),
-    @required Result emoji(String imageUrl),
-    @required Result url(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) text,
+    required TResult Function(String imageUrl) emoji,
+    required TResult Function(String url) url,
   }) {
-    assert(text != null);
-    assert(emoji != null);
-    assert(url != null);
     return emoji(imageUrl);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result text(String text),
-    Result emoji(String imageUrl),
-    Result url(String url),
-    @required Result orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? text,
+    TResult? Function(String imageUrl)? emoji,
+    TResult? Function(String url)? url,
   }) {
-    assert(orElse != null);
+    return emoji?.call(imageUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? text,
+    TResult Function(String imageUrl)? emoji,
+    TResult Function(String url)? url,
+    required TResult orElse(),
+  }) {
     if (emoji != null) {
       return emoji(imageUrl);
     }
@@ -277,26 +319,32 @@ class _$_Emoji implements _Emoji {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result text(_Text value),
-    @required Result emoji(_Emoji value),
-    @required Result url(_Url value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessagePartText value) text,
+    required TResult Function(MessagePartEmoji value) emoji,
+    required TResult Function(MessagePartUrl value) url,
   }) {
-    assert(text != null);
-    assert(emoji != null);
-    assert(url != null);
     return emoji(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result text(_Text value),
-    Result emoji(_Emoji value),
-    Result url(_Url value),
-    @required Result orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MessagePartText value)? text,
+    TResult? Function(MessagePartEmoji value)? emoji,
+    TResult? Function(MessagePartUrl value)? url,
   }) {
-    assert(orElse != null);
+    return emoji?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessagePartText value)? text,
+    TResult Function(MessagePartEmoji value)? emoji,
+    TResult Function(MessagePartUrl value)? url,
+    required TResult orElse(),
+  }) {
     if (emoji != null) {
       return emoji(this);
     }
@@ -304,39 +352,51 @@ class _$_Emoji implements _Emoji {
   }
 }
 
-abstract class _Emoji implements MessagePart {
-  const factory _Emoji(String imageUrl) = _$_Emoji;
+abstract class MessagePartEmoji implements MessagePart {
+  const factory MessagePartEmoji(final String imageUrl) =
+      _$MessagePartEmojiImpl;
 
   String get imageUrl;
-  _$EmojiCopyWith<_Emoji> get copyWith;
+  @JsonKey(ignore: true)
+  _$$MessagePartEmojiImplCopyWith<_$MessagePartEmojiImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-abstract class _$UrlCopyWith<$Res> {
-  factory _$UrlCopyWith(_Url value, $Res Function(_Url) then) =
-      __$UrlCopyWithImpl<$Res>;
+/// @nodoc
+abstract class _$$MessagePartUrlImplCopyWith<$Res> {
+  factory _$$MessagePartUrlImplCopyWith(_$MessagePartUrlImpl value,
+          $Res Function(_$MessagePartUrlImpl) then) =
+      __$$MessagePartUrlImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({String url});
 }
 
-class __$UrlCopyWithImpl<$Res> extends _$MessagePartCopyWithImpl<$Res>
-    implements _$UrlCopyWith<$Res> {
-  __$UrlCopyWithImpl(_Url _value, $Res Function(_Url) _then)
-      : super(_value, (v) => _then(v as _Url));
+/// @nodoc
+class __$$MessagePartUrlImplCopyWithImpl<$Res>
+    extends _$MessagePartCopyWithImpl<$Res, _$MessagePartUrlImpl>
+    implements _$$MessagePartUrlImplCopyWith<$Res> {
+  __$$MessagePartUrlImplCopyWithImpl(
+      _$MessagePartUrlImpl _value, $Res Function(_$MessagePartUrlImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _Url get _value => super._value as _Url;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object url = freezed,
+    Object? url = null,
   }) {
-    return _then(_Url(
-      url == freezed ? _value.url : url as String,
+    return _then(_$MessagePartUrlImpl(
+      null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-class _$_Url implements _Url {
-  const _$_Url(this.url) : assert(url != null);
+/// @nodoc
+
+class _$MessagePartUrlImpl implements MessagePartUrl {
+  const _$MessagePartUrlImpl(this.url);
 
   @override
   final String url;
@@ -347,43 +407,51 @@ class _$_Url implements _Url {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other is _Url &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)));
+        (other.runtimeType == runtimeType &&
+            other is _$MessagePartUrlImpl &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(url);
+  int get hashCode => Object.hash(runtimeType, url);
 
+  @JsonKey(ignore: true)
   @override
-  _$UrlCopyWith<_Url> get copyWith =>
-      __$UrlCopyWithImpl<_Url>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$MessagePartUrlImplCopyWith<_$MessagePartUrlImpl> get copyWith =>
+      __$$MessagePartUrlImplCopyWithImpl<_$MessagePartUrlImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result text(String text),
-    @required Result emoji(String imageUrl),
-    @required Result url(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) text,
+    required TResult Function(String imageUrl) emoji,
+    required TResult Function(String url) url,
   }) {
-    assert(text != null);
-    assert(emoji != null);
-    assert(url != null);
     return url(this.url);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result text(String text),
-    Result emoji(String imageUrl),
-    Result url(String url),
-    @required Result orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? text,
+    TResult? Function(String imageUrl)? emoji,
+    TResult? Function(String url)? url,
   }) {
-    assert(orElse != null);
+    return url?.call(this.url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? text,
+    TResult Function(String imageUrl)? emoji,
+    TResult Function(String url)? url,
+    required TResult orElse(),
+  }) {
     if (url != null) {
       return url(this.url);
     }
@@ -392,26 +460,32 @@ class _$_Url implements _Url {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result text(_Text value),
-    @required Result emoji(_Emoji value),
-    @required Result url(_Url value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessagePartText value) text,
+    required TResult Function(MessagePartEmoji value) emoji,
+    required TResult Function(MessagePartUrl value) url,
   }) {
-    assert(text != null);
-    assert(emoji != null);
-    assert(url != null);
     return url(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result text(_Text value),
-    Result emoji(_Emoji value),
-    Result url(_Url value),
-    @required Result orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MessagePartText value)? text,
+    TResult? Function(MessagePartEmoji value)? emoji,
+    TResult? Function(MessagePartUrl value)? url,
   }) {
-    assert(orElse != null);
+    return url?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessagePartText value)? text,
+    TResult Function(MessagePartEmoji value)? emoji,
+    TResult Function(MessagePartUrl value)? url,
+    required TResult orElse(),
+  }) {
     if (url != null) {
       return url(this);
     }
@@ -419,9 +493,11 @@ class _$_Url implements _Url {
   }
 }
 
-abstract class _Url implements MessagePart {
-  const factory _Url(String url) = _$_Url;
+abstract class MessagePartUrl implements MessagePart {
+  const factory MessagePartUrl(final String url) = _$MessagePartUrlImpl;
 
   String get url;
-  _$UrlCopyWith<_Url> get copyWith;
+  @JsonKey(ignore: true)
+  _$$MessagePartUrlImplCopyWith<_$MessagePartUrlImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

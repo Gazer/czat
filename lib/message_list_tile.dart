@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:czat/text_with_format.dart';
 
 import 'package:czat/message.dart';
@@ -8,7 +6,7 @@ import 'package:flutter/material.dart';
 class MessageListTile extends StatelessWidget {
   final Message message;
 
-  const MessageListTile({Key key, this.message}) : super(key: key);
+  const MessageListTile({required this.message}) : super();
 
   @override
   Widget build(BuildContext context) {

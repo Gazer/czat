@@ -10,7 +10,7 @@ class QuestionsPage extends StatefulWidget {
     return MaterialPageRoute(builder: (_) => QuestionsPage());
   }
 
-  QuestionsPage({Key key}) : super(key: key);
+  QuestionsPage() : super();
 
   @override
   _QuestionsPageState createState() => _QuestionsPageState();
@@ -40,7 +40,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
               var question = box.getAt(index);
               return ListTile(
                 title: TextWithFormat(
-                  parts: question.parts(),
+                  parts: question!.parts(),
                   fontSize: 42,
                 ),
                 leading: Text(

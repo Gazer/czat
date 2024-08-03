@@ -3,18 +3,28 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'chat_command.freezed.dart';
 
 @freezed
-abstract class ChatCommand with _$ChatCommand {
-  const factory ChatCommand.text(String user, String text, String imageUrl,
-      Map<dynamic, dynamic> emotes) = _TextMessage;
+sealed class ChatCommand with _$ChatCommand {
+  const factory ChatCommand.text(
+    String user,
+    String text,
+    String imageUrl,
+    Map<dynamic, dynamic> emotes,
+  ) = ChatText;
   const factory ChatCommand.question(
-      String user,
-      String text,
-      String imageUrl,
-      Map<dynamic, dynamic> emotes,
-      String question,
-      int emotesOffset) = _QuestionMessage;
-  const factory ChatCommand.vote(String user, String text, String imageUrl,
-      Map<dynamic, dynamic> emotes, int questionId) = _VoteMessage;
+    String user,
+    String text,
+    String imageUrl,
+    Map<dynamic, dynamic> emotes,
+    String question,
+    int emotesOffset,
+  ) = ChatQuestion;
+  const factory ChatCommand.vote(
+    String user,
+    String text,
+    String imageUrl,
+    Map<dynamic, dynamic> emotes,
+    int questionId,
+  ) = ChatVote;
 
   factory ChatCommand(
     String user,
