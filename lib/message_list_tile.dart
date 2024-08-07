@@ -41,7 +41,7 @@ class MessageListTile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 18),
           child: TextWithFormat(
             parts: message.parts(),
-            fontSize: 48,
+            fontSize: 36,
           ),
         ),
       ],

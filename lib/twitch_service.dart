@@ -26,7 +26,7 @@ void _runTwitchClient(List params) {
   Map<String, String> avatars = {};
 
   var client = tmi.Client(
-    channels: "rubius",
+    channels: "livviiy",
     secure: true,
   );
   client.connect();
